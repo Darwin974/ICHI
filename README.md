@@ -1,6 +1,6 @@
-# ICHI - Jeu Uno en Python avec Pygame
+# ICHI - Jeu Uno en Python avec Kivy
 
-**ICHI** est une version numérique du célèbre jeu de cartes **Uno**, créée en utilisant **Python** et **Pygame**. Ce projet est en cours de développement, avec des plans pour ajouter des fonctionnalités multijoueurs et une IA améliorée dans le futur.
+**ICHI** est une version numérique du célèbre jeu de cartes **Uno**, créée en utilisant **Python** et **Kivy**. Ce projet est en cours de développement, avec des plans pour ajouter des fonctionnalités multijoueurs et une IA améliorée dans le futur.
 
 ## Fonctionnalités
 
@@ -8,7 +8,7 @@
   - Jouer des cartes en fonction de la couleur ou du numéro correspondant
   - Cartes spéciales (Passer, Inverser, Piocher Deux, Wild, Wild Piocher Quatre)
   - Déclaration Uno pour la dernière carte
-- **Interface Graphique** : Construite avec Pygame pour afficher le jeu, la main des joueurs et les cartes jouées.
+- **Interface Graphique** : Construite avec Kivy pour afficher le jeu, la main des joueurs et les cartes jouées.
 - **Mode Solo** : Joue contre des adversaires IA basiques.
 
 ## Roadmap
@@ -24,4 +24,4 @@
 
 ### Prérequis
 - Python 3.7 ou supérieur
-- Bibliothèque Pygame
+- Bibliothèque Kivy
