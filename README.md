@@ -6,18 +6,19 @@
 
 - **Mécanique du jeu** : Implémente les règles de l'Uno, y compris :
   - Jouer des cartes en fonction de la couleur ou du numéro correspondant
-  - Cartes spéciales (Passer, Inverser, Piocher Deux, Wild, Wild Piocher Quatre)
-  - Déclaration Uno pour la dernière carte
+  - Cartes spéciales (Passer, Inverser, Piocher Deux, Joker, Joker +4)
+  - Déclaration Ichi pour la dernière carte
 - **Interface Graphique** : Construite avec Kivy pour afficher le jeu, la main des joueurs et les cartes jouées.
 - **Mode Solo** : Joue contre des adversaires IA basiques.
 
 ## Roadmap
 
-- [x] Mettre en place la structure du projet et initialiser un dépôt GitHub
-- [ ] Implémenter les classes de carte et de paquet
-- [ ] Boucle de jeu de base et interface Pygame
-- [ ] Améliorer la prise de décision de l'IA
-- [ ] Ajouter le support multijoueur local
+- [x] Mettre en place la structure du projet
+- [x] Implémenter les classes de carte et de paquet
+- [ ] Implémenter les régles "basiques" du UNO (si il y a un 3 jaune, je ne peux pas mettre mon 8 vert)
+- [ ] Boucle de jeu de base et interface Kivy
+- [ ] Faire une IA
+- [ ] Ajouter le support multijoueur local (fonctionnalité future)
 - [ ] Ajouter le support multijoueur en ligne (fonctionnalité future)
 
 ## Installation
