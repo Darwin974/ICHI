@@ -12,4 +12,4 @@ class Carte:
         return self._couleur
 
     def __str__(self):
-        return f"{self._valeur}, {self._couleur}"
+        return f"{self.valeur} {self.couleur}"

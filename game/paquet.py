@@ -25,8 +25,8 @@ class JeuDeCartes:
 
         #Ajoute les cartes Joker et Joker +4
         for i in range(4):
-            paquet.append(Carte('Joker', 'Special'))      # 4 cartes Joker
-            paquet.append(Carte('Joker +4', 'Special'))   # 4 cartes Joker +4
+            paquet.append(Carte('Joker', ''))      #4 cartes Joker
+            paquet.append(Carte('Joker +4', ''))   #4 cartes Joker +4
 
         return paquet
 
@@ -40,5 +40,11 @@ class JeuDeCartes:
         shuffle(self.PaquetDeCarte)
 
     def piocher(self):
-        #Tire la carte du haut du paquet
-        pass
+        if self.PaquetDeCarte:  
+            return self.PaquetDeCarte.pop()  #Tire la carte du haut du paquet
+        else:
+            return None  #Aucune carte à piocher
+
+jeu1 = JeuDeCartes()
+jeu1.melanger_paquet()
+print(jeu1.piocher())

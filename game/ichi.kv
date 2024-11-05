@@ -1,0 +1,94 @@
+#Bouton rond
+<RoundedButton@Button>:
+    font_name: "fonts/OnsenJapanDemoRegular.ttf" 
+    font_size: '24sp'
+    background_color: (0, 0, 0, 0)
+    background_normal: ''
+    canvas.before:
+        Color: 
+            rgba: (0, 0.5, 1, 1)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [45]
+
+#Gestionnaire d'écrans
+MyScreenManager:
+    HomeScreen:
+        name: "home"
+    SettingsScreen:
+        name: "settings"
+    GameSelect:
+        name: "game_select"
+    GameScreen:
+        name: "game_screen"
+
+#Écran d'accueil
+<HomeScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+        padding: 50
+
+        #Logo
+        BoxLayout:
+            size_hint: (1, 0.7)  
+            orientation: 'vertical'
+            Image:
+                source: 'img\ICHI_logo.png' 
+                size_hint: (0.45, 0.45)
+                allow_stretch: True
+                keep_ratio: True
+                pos_hint: {"center_x": 0.5}
+
+        #Bouton Play
+        RoundedButton:
+            text: "Play"
+            size_hint: (0.5, 0.2)
+            size: (275, 90)
+            pos_hint: {"center_x": 0.5}
+            on_release:
+                app.root.current = "game_select"
+
+        #Bouton Settings
+        RoundedButton:
+            text: "Settings"
+            size_hint: (0.5, 0.2)
+            pos_hint: {"center_x": 0.5}
+            on_release:
+                app.root.current = "settings"
+
+#Écran des paramètres
+<SettingsScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 20
+        padding: 50
+        Label:
+            text: "Écran des paramètres"
+        RoundedButton:
+            text: "Retour"
+            size_hint: (0.5, 0.3)
+            pos_hint: {"center_x": 0.5}
+            on_release:
+                app.root.current = "home" 
+
+<GameSelect>:
+    BoxLayout:
+        orientation:'vertical'
+        spacing: 20
+        padding: 50
+        Label:
+            text: "Choisissez le mode de jeu"
+        RoundedButton:
+            text: "Solo"
+            size_hint: (0.5, 0.3)
+            pos_hint: {"center_x": 0.5}
+            on_release: 
+                app.root.current = "game_screen"
+        RoundedButton:
+            text: "Multiplayer"
+            size_hint: (0.5, 0.3)
+            pos_hint: {"center_x": 0.5}
+            on_release:
+                app.root.current = "game_screen"
