@@ -32,7 +32,7 @@ source.include_exts =
 # (list) List of exclusions using pattern matching
 # Do not prefix with './'
 #source.exclude_patterns = license,images/*/*.jpg
-command: yes | buildozer android debug
+
 # (str) Application versioning (method 1)
 version = 0.1
 
