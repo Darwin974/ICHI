@@ -9,13 +9,13 @@
 title = Ichi
 
 # (str) Package name
-package.name = myapp
+package.name = ichi
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.test
 
 # (str) Source code where the main.py live
-source.dir = .
+source.dir = game
 
 # (list) Source files to include (leave empty to include all the files)
 source.include_exts = 
@@ -32,7 +32,7 @@ source.include_exts =
 # (list) List of exclusions using pattern matching
 # Do not prefix with './'
 #source.exclude_patterns = license,images/*/*.jpg
-
+command: yes | buildozer android debug
 # (str) Application versioning (method 1)
 version = 0.1
 
