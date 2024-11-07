@@ -44,7 +44,3 @@ class JeuDeCartes:
             return self.PaquetDeCarte.pop()  #Tire la carte du haut du paquet
         else:
             return None  #Aucune carte à piocher
-
-jeu1 = JeuDeCartes()
-jeu1.melanger_paquet()
-print(jeu1.piocher())

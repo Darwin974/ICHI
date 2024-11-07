@@ -65,7 +65,9 @@ MyScreenManager:
         spacing: 20
         padding: 50
         Label:
-            text: "Écran des paramètres"
+            text: "Ecran des parametres"
+            font_name: "fonts/OnsenJapanDemoRegular.ttf" 
+            font_size: '24sp'
         RoundedButton:
             text: "Retour"
             size_hint: (0.5, 0.3)
@@ -80,6 +82,8 @@ MyScreenManager:
         padding: 50
         Label:
             text: "Choisissez le mode de jeu"
+            font_name: "fonts/OnsenJapanDemoRegular.ttf" 
+            font_size: '24sp'
         RoundedButton:
             text: "Solo"
             size_hint: (0.5, 0.3)
@@ -92,3 +96,22 @@ MyScreenManager:
             pos_hint: {"center_x": 0.5}
             on_release:
                 app.root.current = "game_screen"
+
+<GameScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            id: talon
+            text: "Carte sur le talon"
+            font_size: '24sp'
+        BoxLayout:
+            id: main_joueur
+            orientation: 'horizontal'
+            spacing: 10
+            padding: 20
+        Label:
+            id: message
+            text: "Tour de : Joueur 1"
+        RoundedButton:
+            text: "Passer le tour"
+            on_release: root.prochain_tour()
