@@ -15,8 +15,8 @@
 
 - [x] Mettre en place la structure du projet
 - [x] Implémenter les classes de carte et de paquet
-- [ ] Implémenter les régles "basiques" du UNO (si il y a un 3 jaune, je ne peux pas mettre mon 8 vert)
-- [ ] Boucle de jeu de base et interface Kivy
+- [x] Implémenter les régles "basiques" du UNO (si il y a un 3 jaune, je ne peux pas mettre mon 8 vert)
+- [~] Boucle de jeu de base et interface Kivy
 - [ ] Faire une IA
 - [ ] Ajouter le support multijoueur local (fonctionnalité future)
 - [ ] Ajouter le support multijoueur en ligne (fonctionnalité future)

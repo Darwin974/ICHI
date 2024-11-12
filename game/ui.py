@@ -25,7 +25,7 @@ class GameScreen(Screen):
     def prochain_tour(self):
         gagnant = self.game.verifier_victoire()
         if gagnant:
-            self.ids['message'].text = f"{gagnant} a gagné!"
+            self.ids['message'].text = f"{gagnant} a gagne!"
         else:
             self.game.jouer_tour()
             self.afficher_main()
@@ -48,7 +48,7 @@ class MyScreenManager(ScreenManager):
 
 class Ichi(App):
         def build(self):
-            return Builder.load_file("ichi.kv")
+            return Builder.load_file("Ichi.kv")
 
 if __name__ == '__main__':
     Ichi().run()

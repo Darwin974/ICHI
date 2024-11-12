@@ -15,21 +15,21 @@ class UnoGame:
 
     def ajouter_joueur(self, nom):
         # Chaque joueur reçoit 7 cartes
-        main_joueur = [self.piocher_carte() for _ in range(7)]
+        main_joueur = [self.piocher_carte() for e in range(7)]
         self.joueurs.append({'nom': nom, 'main': main_joueur})
 
     def piocher_carte(self):
-        return self.pioche.pop() if self.pioche else None
+        return self.jeu.piocher()
 
     def jouer_carte(self, carte):
         self.talon.append(carte)
 
     def carte_valide(self, carte, carte_actuelle):
-        # Vérifie si la carte jouée est valide
+        #Verifie si la carte jouée est valide
         return (carte.couleur == carte_actuelle.couleur or
                 carte.valeur == carte_actuelle.valeur or
-                carte.couleur == '' or  # Joker
-                carte.valeur == 'Joker +4')
+                carte.valeur == 'Joker +4' or
+                carte.valeur == '+2')
 
     def appliquer_effet(self, carte):
         if carte.valeur == '+2':

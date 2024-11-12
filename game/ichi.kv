@@ -104,6 +104,7 @@ MyScreenManager:
             id: talon
             text: "Carte sur le talon"
             font_size: '24sp'
+            font_name: "fonts/OnsenJapanDemoRegular.ttf"
         BoxLayout:
             id: main_joueur
             orientation: 'horizontal'
@@ -111,7 +112,8 @@ MyScreenManager:
             padding: 20
         Label:
             id: message
-            text: "Tour de : Joueur 1"
+            text: "Tour du Joueur 1"
         RoundedButton:
             text: "Passer le tour"
+            font_name: "fonts/OnsenJapanDemoRegular.ttf"
             on_release: root.prochain_tour()
