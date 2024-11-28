@@ -92,22 +92,34 @@ MyScreenManager:
                 app.root.current = "game_screen"
 
 <GameScreen>:
-    BoxLayout:
-        orientation: 'vertical'
+    RelativeLayout:
+        Label:
+            id: nb_cartes_ia
+            size_hint:(.1, .1)
+            pos_hint:{'x':.1, 'y':.90}
+            text: ""
+            font_name: "fonts/Montserrat-SemiBold.ttf"
         Label:
             id: talon
-            text: ""  # Initialement vide
+            size_hint:(.40, .15)
+            pos_hint:{'x':.30, 'y':.65}
+            text: ""  
             font_size: '24sp'
             font_name: "fonts/Montserrat-SemiBold.ttf"
         BoxLayout:
+            size_hint:(.1, .1)
+            pos_hint:{'x':.10, 'y':.45}
             id: main_joueur
             orientation: 'horizontal'
-            spacing: 10
-            padding: 20
+            spacing: 30
         Label:
+            size_hint:(.40, .15)
+            pos_hint:{'x':.30, 'y':.25}
             id: message
-            text: ""  # Initialement vide
+            text: ""  
             font_name: "fonts/Montserrat-SemiBold.ttf"
         RoundedButton:
+            size_hint:(.40, .15)
+            pos_hint:{'x':.30, 'y':.10}
             text: "Passer le tour"
             on_release: root.passer_tour()

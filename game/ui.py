@@ -1,3 +1,4 @@
+from kivy.uix.settings import text_type
 from kivy.app import App
 from kivy.uix.popup import Popup
 from kivy.uix.gridlayout import GridLayout
@@ -16,6 +17,7 @@ class GameScreen(Screen):
         self.afficher_main()
         self.afficher_carte_talon()
         self._ia_en_cours = False
+        self.afficher_cartes_ia()
 
     def afficher_main(self):
         self.ids['main_joueur'].clear_widgets()
@@ -23,6 +25,9 @@ class GameScreen(Screen):
             btn = Button(text=str(carte), size_hint=(None, None), size=(50, 70))
             btn.bind(on_release=lambda instance, c=carte: self.jouer_carte(c))
             self.ids['main_joueur'].add_widget(btn)
+
+    def afficher_cartes_ia(self):
+        self.ids['nb_cartes_ia'].text = "IA : " + str(len(self.game.ia['main'])) + " cartes restantes"
 
     def jouer_carte(self, carte):
         if self.game.carte_valide(carte, self.game.talon[-1]):
@@ -61,15 +66,16 @@ class GameScreen(Screen):
 
     def prochain_tour(self):
         print("Passage au tour suivant")
+        self.afficher_cartes_ia()
 
         if self.game.tour_joueur:
             self.afficher_main()
             self.afficher_carte_talon()
             self.ids['message'].text = "Votre tour !"
         else:
-            # Vérifiez que l'IA ne joue pas déjà
+            #Verifiez que l'IA ne joue pas
             if not hasattr(self, '_ia_en_cours') or not self._ia_en_cours:
-                self._ia_en_cours = True  # Bloque d'autres appels
+                self._ia_en_cours = True  #Bloque d'autres appels
                 self.ids['message'].text = "Tour de l'IA..."
                 Clock.schedule_once(lambda dt: self.jouer_tour_ia(), 1)
 
@@ -80,10 +86,10 @@ class GameScreen(Screen):
 
     def passer_tour(self):
         print("Passage au tour suivant demandé")
-        # Le joueur pioche une carte
+        #Le joueur pioche une carte
         self.game.joueur['main'].append(self.game.piocher_carte())
         self.afficher_main()
-        # Forcer le passage à l'IA
+        #Forcer le passage a l'IA
         self.game.tour_joueur = False
         self.prochain_tour()
 
