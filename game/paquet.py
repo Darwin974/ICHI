@@ -20,7 +20,7 @@ class JeuDeCartes:
             #Ajoute les cartes spéciales (deux de chaque par couleur)
             for i in range(2):
                 paquet.append(Carte('+2', couleur))
-                paquet.append(Carte('Changement de sens', couleur))
+                paquet.append(Carte('Inversion', couleur))
                 paquet.append(Carte('Passer', couleur))
 
         #Ajoute les cartes Joker et Joker +4

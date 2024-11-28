@@ -35,7 +35,7 @@ MyScreenManager:
             size_hint: (1, 0.7)  
             orientation: 'vertical'
             Image:
-                source: 'img\ICHI_logo.png' 
+                source: 'img/ICHI_logo.png' 
                 size_hint: (0.45, 0.45)
                 allow_stretch: True
                 keep_ratio: True
@@ -90,21 +90,15 @@ MyScreenManager:
             pos_hint: {"center_x": 0.5}
             on_release: 
                 app.root.current = "game_screen"
-        RoundedButton:
-            text: "Multiplayer"
-            size_hint: (0.5, 0.3)
-            pos_hint: {"center_x": 0.5}
-            on_release:
-                app.root.current = "game_screen"
 
 <GameScreen>:
     BoxLayout:
         orientation: 'vertical'
         Label:
             id: talon
-            text: "Carte sur le talon"
+            text: ""  # Initialement vide
             font_size: '24sp'
-            font_name: "fonts/OnsenJapanDemoRegular.ttf"
+            font_name: "fonts/Montserrat-SemiBold.ttf"
         BoxLayout:
             id: main_joueur
             orientation: 'horizontal'
@@ -112,8 +106,8 @@ MyScreenManager:
             padding: 20
         Label:
             id: message
-            text: "Tour du Joueur 1"
+            text: ""  # Initialement vide
+            font_name: "fonts/Montserrat-SemiBold.ttf"
         RoundedButton:
             text: "Passer le tour"
-            font_name: "fonts/OnsenJapanDemoRegular.ttf"
-            on_release: root.prochain_tour()
+            on_release: root.passer_tour()
