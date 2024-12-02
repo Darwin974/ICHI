@@ -1,4 +1,4 @@
-##### Spoiler : Les régles du jeu sont exactement les mêmes que celles du UNO. ;)
+##### Spoiler : Les régles du jeu sont exactement les mêmes que celles du UNO. :wink:
 
 ### Objectif du jeu
 Le but est de se débarrasser de toutes ses cartes avant l'adversaire, tout en respectant les règles de correspondance des cartes.
