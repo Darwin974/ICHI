@@ -17,10 +17,13 @@
 - [x] Implémenter les régles "basiques" du UNO (si il y a un 3 jaune, je ne peux pas mettre mon 8 vert)
 - [x] Boucle de jeu de base et interface Kivy
 - [x] Faire une IA
+- [x] Faire un exécutable .exe
 - [ ] Ajouter le support multijoueur local (fonctionnalité future)
 - [ ] Ajouter le support multijoueur en ligne (fonctionnalité future)
 
 ## Installation
+Téléchargez le dossier **[/game](https://github.com/Darwin974/ICHI/blob/main/game)** et exécuter le fichier **[main.py](https://github.com/Darwin974/ICHI/blob/main/game/main.py)**
+Ou alors téléchargez le dossier **[/Ichi_App](https://github.com/Darwin974/ICHI/blob/main/Ichi_App)** et lancez l'exécutable **[Ichi.exe](https://github.com/Darwin974/ICHI/blob/main/Ichi_App/Ichi/Ichi.exe)**.
 
 ### Prérequis
 - Python 
