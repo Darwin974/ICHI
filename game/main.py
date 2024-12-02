@@ -41,7 +41,7 @@ class UnoGame:
         main_ia = self.ia['main']
         carte_actuelle = self.talon[-1]
 
-        # Trouver une carte valide à jouer
+        #Trouve une carte valide pour jouer
         carte_a_jouer = None
         for carte in main_ia:
             if self.carte_valide(carte, carte_actuelle):
@@ -52,23 +52,21 @@ class UnoGame:
             main_ia.remove(carte_a_jouer)
             self.talon.append(carte_a_jouer)
 
-            # Si c'est un Joker ou Joker +4, choisir une couleur
+            #Si c'est un Joker, Joker +4, choisir une couleur
             if carte_a_jouer.valeur in ['Joker', 'Joker +4']:
                 couleur_choisie = self.choisir_couleur_ia()
                 carte_a_jouer._couleur = couleur_choisie
                 print(f"L'IA a choisi la couleur {couleur_choisie}.")
 
 
-            # Appliquer les effets de la carte jouée
             self.appliquer_effet(carte_a_jouer)
 
         else:
-            # L'IA pioche une carte si elle ne peut pas jouer
+            #L'IA pioche une carte si elle ne peut pas jouer
             carte_piochee = self.piocher_carte()
             main_ia.append(carte_piochee)
             print("L'IA pioche une carte.")
 
-        # Passer au tour suivant
         self.tour_joueur = True
         self.game_screen.prochain_tour()
         print(f"Après le tour - Joueur: {len(self.joueur['main'])} cartes, IA: {len(self.ia['main'])} cartes")
@@ -80,10 +78,10 @@ class UnoGame:
         couleurs_presentes = [carte.couleur for carte in self.ia['main'] if carte.couleur in couleurs_possibles]
 
         if couleurs_presentes:
-            # Prend la couleur la plus fréquente dans la main de l'IA
+            #Prend la couleur la plus frequente dans la main de l'IA
             return max(set(couleurs_presentes), key=couleurs_presentes.count)
         else:
-            # Choisir une couleur aléatoire si aucune n'est présente
+            #Choisi une couleur aleatoire si aucune n'est presente
             return random.choice(couleurs_possibles)
 
 

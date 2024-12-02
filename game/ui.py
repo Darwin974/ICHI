@@ -1,4 +1,3 @@
-from kivy.uix.settings import text_type
 from kivy.app import App
 from kivy.uix.popup import Popup
 from kivy.uix.gridlayout import GridLayout
@@ -35,7 +34,7 @@ class GameScreen(Screen):
             self.game.jouer_carte(carte)
 
             if carte.valeur in ['Joker', 'Joker +4']:
-                # Afficher la boîte de dialogue pour choisir une couleur
+                #Afficher la fenetre pour choisir une couleur
                 self.choisir_couleur(lambda couleur: self.appliquer_couleur(carte, couleur))
             else:
                 self.appliquer_effet_et_tour(carte)
@@ -43,7 +42,7 @@ class GameScreen(Screen):
             self.ids['message'].text = "Carte non valide !"
 
     def appliquer_couleur(self, carte, couleur):
-        """Appliquer la couleur choisie au Joker ou Joker +4."""
+        """Applique la couleur choisie au Joker ou Joker +4."""
         carte._couleur = couleur
         self.appliquer_effet_et_tour(carte)
 
@@ -57,7 +56,7 @@ class GameScreen(Screen):
             self.ids['message'].text = f"{gagnant} gagné !"
             return
         
-        #Alterne le tour après que le joueur ait joué
+        #Alterne le tour
         self.game.tour_joueur = not self.game.tour_joueur
         self.prochain_tour()
 
@@ -103,7 +102,7 @@ class GameScreen(Screen):
         def choisir_couleur_callback(instance):
             couleur = instance.text
             popup.dismiss()
-            callback(couleur)  # Appelle la fonction une fois la couleur choisie
+            callback(couleur)  #Appelle la fonction une fois la couleur choisie
 
         for couleur in couleurs:
             btn = Button(text=couleur, background_color=self.get_color_rgba(couleur))
