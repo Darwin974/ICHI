@@ -15,28 +15,35 @@ class UnoGame:
         self.tour_joueur = True  #True pour le joueur, False pour l'IA
 
     def piocher_carte(self):
+        '''Pioche une carte'''
         return self.jeu.piocher()
 
     def jouer_carte(self, carte):
+        '''Met la carte sur le talon'''
         self.talon.append(carte)
 
     def carte_valide(self, carte, carte_actuelle):
+        '''Verifie si la carte est valide'''
         return (carte.couleur == carte_actuelle.couleur or
                 carte.valeur == carte_actuelle.valeur or
                 carte.valeur in ['Joker +4', 'Joker'])
 
     def appliquer_effet(self, carte):
+        '''Applique les effets des cartes'''
+        #Applique l'effet du +2
         if carte.valeur == '+2':
             cible = self.ia if self.tour_joueur else self.joueur
             cible['main'].extend([self.piocher_carte() for _ in range(2)])
+        #Applique l'effet du Joker +4
         elif carte.valeur == 'Joker +4':
             cible = self.ia if self.tour_joueur else self.joueur
             cible['main'].extend([self.piocher_carte() for _ in range(4)])
+        #Applique l'effet de la carte Passer
         elif carte.valeur == 'Passer':
             self.tour_joueur = not self.tour_joueur 
 
     def tour_ia(self):
-        """Logique du tour de l'IA."""
+        '''Logique du tour de l'IA.'''
         print(f"Avant le tour - Joueur: {len(self.joueur['main'])} cartes, IA: {len(self.ia['main'])} cartes")
         main_ia = self.ia['main']
         carte_actuelle = self.talon[-1]
@@ -68,24 +75,24 @@ class UnoGame:
             print("L'IA pioche une carte.")
 
         self.tour_joueur = True
-        self.game_screen.prochain_tour()
         print(f"Après le tour - Joueur: {len(self.joueur['main'])} cartes, IA: {len(self.ia['main'])} cartes")
 
 
     def choisir_couleur_ia(self):
-        """Choisir une couleur basée sur les cartes de l'IA."""
+        '''Choisir une couleur basée sur les cartes de l'IA.'''
         couleurs_possibles = ['Rouge', 'Bleu', 'Vert', 'Jaune']
-        couleurs_presentes = [carte.couleur for carte in self.ia['main'] if carte.couleur in couleurs_possibles]
+        couleurs_presentes = [carte.couleur for carte in self.ia['main']]
 
         if couleurs_presentes:
             #Prend la couleur la plus frequente dans la main de l'IA
-            return max(set(couleurs_presentes), key=couleurs_presentes.count)
+            return max((couleurs_presentes), key=couleurs_presentes.count)
         else:
             #Choisi une couleur aleatoire si aucune n'est presente
             return random.choice(couleurs_possibles)
 
 
     def verifier_victoire(self):
+        '''Verifie si il y a Victoire'''
         if not self.jeu.PaquetDeCarte:  #Verifie si la pioche est vide
             return "Il n'y a plus de carte..."
         elif not self.joueur['main']:

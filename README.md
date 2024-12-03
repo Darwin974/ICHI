@@ -23,7 +23,7 @@
 
 ## Installation
 Téléchargez le dossier **[/game](https://github.com/Darwin974/ICHI/blob/main/game)** et exécuter le fichier **[main.py](https://github.com/Darwin974/ICHI/blob/main/game/main.py)**
-Ou alors téléchargez le dossier **[/Ichi_App](https://github.com/Darwin974/ICHI/blob/main/Ichi_App)** et lancez l'exécutable **[Ichi.exe](https://github.com/Darwin974/ICHI/blob/main/Ichi_App/Ichi/Ichi.exe)**.
+Ou alors téléchargez le dossier **[/Ichi_exe](https://github.com/Darwin974/ICHI/blob/main/Ichi_exe)** et lancez l'exécutable **[Ichi.exe](https://github.com/Darwin974/ICHI/blob/main/Ichi_App/Ichi.exe)**.
 
 ### Prérequis
 - Python 

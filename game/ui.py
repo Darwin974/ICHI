@@ -19,6 +19,7 @@ class GameScreen(Screen):
         self.afficher_cartes_ia()
 
     def afficher_main(self):
+        '''Affiche la main du joueur'''
         self.ids['main_joueur'].clear_widgets()
         for carte in self.game.joueur['main']:
             btn = Button(text=str(carte), size_hint=(None, None), size=(50, 70))
@@ -26,6 +27,7 @@ class GameScreen(Screen):
             self.ids['main_joueur'].add_widget(btn)
 
     def afficher_cartes_ia(self):
+        '''Affiche le nombre de cartes restantes de l'IA dans le label nb_cartes_ia'''
         self.ids['nb_cartes_ia'].text = "IA : " + str(len(self.game.ia['main'])) + " cartes restantes"
 
     def jouer_carte(self, carte):
@@ -37,17 +39,18 @@ class GameScreen(Screen):
                 #Afficher la fenetre pour choisir une couleur
                 self.choisir_couleur(lambda couleur: self.appliquer_couleur(carte, couleur))
             else:
+                self.afficher_carte_talon()
                 self.appliquer_effet_et_tour(carte)
         else:
             self.ids['message'].text = "Carte non valide !"
 
     def appliquer_couleur(self, carte, couleur):
-        """Applique la couleur choisie au Joker ou Joker +4."""
+        '''Applique la couleur choisie au Joker ou Joker +4'''
         carte._couleur = couleur
         self.appliquer_effet_et_tour(carte)
 
     def appliquer_effet_et_tour(self, carte):
-        """Appliquer l'effet de la carte et passer au tour suivant."""
+        '''Applique l'effet de la carte et passe au tour suivant'''
         self.game.appliquer_effet(carte)
 
         #Verifie si victoire apres coup
@@ -61,11 +64,19 @@ class GameScreen(Screen):
         self.prochain_tour()
 
     def afficher_carte_talon(self):
+        '''Affiche la carte du talon dans le label talon'''
         self.ids['talon'].text = str(self.game.talon[-1])
 
     def prochain_tour(self):
+        '''Passe au prochain tour'''
         print("Passage au tour suivant")
         self.afficher_cartes_ia()
+        
+        #Verifie si victoire apres coup
+        gagnant = self.game.verifier_victoire()
+        if gagnant:
+            self.ids['message'].text = f"{gagnant} gagné !"
+            return
 
         if self.game.tour_joueur:
             self.afficher_main()
@@ -80,6 +91,7 @@ class GameScreen(Screen):
 
     def jouer_tour_ia(self):
         self.game.tour_ia()
+        self.afficher_carte_talon()
         self._ia_en_cours = False
         self.prochain_tour()
 
