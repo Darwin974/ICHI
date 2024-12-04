@@ -1,6 +1,6 @@
 # Document explicatif du projet ICHI
 ### Sommaire :
-- **[L'objectif principal du projet](#objectif-principal-fixé)**
+- **[L'objectif principal du projet](#objectif-principal)**
 - **[Le fonctionnement du programme](#fonctionnement-du-programme)**
 - **[Les difficultés rencontrés](#les-difficultés-rencontrés)**
 
