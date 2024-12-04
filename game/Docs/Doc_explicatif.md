@@ -9,11 +9,11 @@ L'objectif que je me suis fixé quand j'ai eu l'idée de faire **Ichi** était d
 
 ## Fonctionnement du programme
 ### Sommaire :
-- Le fichier **[carte.py](#cartepy)**
-- Le fichier **[paquet.py](#paquetpy)**
-- Le fichier **[main.py](#mainpy)**
-- Le fichier **[ui.py](#uipy)**
-- Le fichier **[Ichi.kv](#ichikv)**
+- Le fichier **[carte.py](#cartepy-)**
+- Le fichier **[paquet.py](#paquetpy-)**
+- Le fichier **[main.py](#mainpy-)**
+- Le fichier **[ui.py](#uipy-)**
+- Le fichier **[Ichi.kv](#ichikv-)**
 
 ### [carte.py](https://github.com/Darwin974/ICHI/blob/main/game/carte.py) :
 Le fichier **carte.py** permet uniquement d'héberger la class **Carte**, avec ses attributs d'objets et ses méthodes qui vont être utilisés par la suite dans **[paquet.py](https://github.com/Darwin974/ICHI/blob/main/game/paquet.py)** pour créer les cartes du jeu.
