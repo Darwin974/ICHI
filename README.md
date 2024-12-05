@@ -22,9 +22,9 @@
 - [ ] Ajouter le support multijoueur en ligne (fonctionnalité future)
 
 ## Installation
-Téléchargez le dossier **[/game](https://github.com/Darwin974/ICHI/blob/main/game)** et exécuter le fichier **[main.py](https://github.com/Darwin974/ICHI/blob/main/game/main.py)**
+Téléchargez le dossier **[/game](https://github.com/Darwin974/ICHI/blob/main/game)** et exécuter le fichier **[main.py](https://github.com/Darwin974/ICHI/blob/main/game/main.py)**.
 Ou alors téléchargez le dossier **[/Ichi_exe](https://github.com/Darwin974/ICHI/blob/main/Ichi_exe)** et lancez l'exécutable **[Ichi.exe](https://github.com/Darwin974/ICHI/blob/main/Ichi_App/Ichi.exe)**.
 
-### Prérequis
+### Prérequis pour lancer le jeu avec le fichier [main.py](https://github.com/Darwin974/ICHI/blob/main/game/main.py)
 - Python 
-- Bibliothèque Kivy
+- La bibliothèque Kivy et ses dépendances
