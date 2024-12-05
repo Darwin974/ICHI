@@ -65,7 +65,12 @@ class GameScreen(Screen):
 
     def afficher_carte_talon(self):
         '''Affiche la carte du talon dans le label talon'''
-        self.ids['talon'].text = str(self.game.talon[-1])
+        carte_actuelle = self.game.talon[-1]
+        if len(self.game.talon) == 1 and carte_actuelle.valeur in ['Joker', 'Joker +4']:
+            self.ids['message'].text = f"{str(carte_actuelle)} (Jouez n'importe quelle carte)"
+        elif len(self.game.talon) == 1 and not carte_actuelle.valeur in ['Joker', 'Joker +4']:
+            self.ids['message'].text = "Vous jouez en premier(e)"
+        self.ids['talon'].text = str(carte_actuelle)
 
     def prochain_tour(self):
         '''Passe au prochain tour'''
@@ -134,9 +139,6 @@ class GameScreen(Screen):
         }.get(couleur, (1, 1, 1, 1))  #base : blanc
 
 class HomeScreen(Screen):
-    pass
-
-class SettingsScreen(Screen):
     pass
 
 class GameSelect(Screen):

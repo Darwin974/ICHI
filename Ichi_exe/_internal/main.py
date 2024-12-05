@@ -24,6 +24,9 @@ class UnoGame:
 
     def carte_valide(self, carte, carte_actuelle):
         '''Verifie si la carte est valide'''
+        #Si la 1ere carte du talon est un Joker(+4), toutes les cartes sont valide
+        if len(self.talon) == 1 and carte_actuelle.valeur in ['Joker', 'Joker +4']:
+            return True
         return (carte.couleur == carte_actuelle.couleur or
                 carte.valeur == carte_actuelle.valeur or
                 carte.valeur in ['Joker +4', 'Joker'])
@@ -65,6 +68,10 @@ class UnoGame:
                 carte_a_jouer._couleur = couleur_choisie
                 print(f"L'IA a choisi la couleur {couleur_choisie}.")
 
+            if carte_a_jouer.valeur == 'Passer':
+                self.tour_joueur = False
+                print("L'ia a utiliser la carte passer")
+                return self.tour_ia
 
             self.appliquer_effet(carte_a_jouer)
 
