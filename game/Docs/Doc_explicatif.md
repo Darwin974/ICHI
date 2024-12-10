@@ -53,7 +53,7 @@ Retourne un tableau contenant toutes les cartes sous forme d’objets Carte.
 \
 ```get_paquet()``` : retourne une liste des cartes sous forme de chaînes de caractères (via leur méthode ```__str__```).
 
-Cette classe permet donc de gérer toutes les opérations liées au paquet de cartes du jeu : **création, mélange, et gestion des tirages pendant la partie**.
+Cette classe permet donc de gérer toutes les opérations liées au paquet de cartes du jeu : **création, mélange, et gestion des tirages** pendant la partie.
 
 ---
 
