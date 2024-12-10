@@ -85,18 +85,24 @@ MyScreenManager:
             text: ""
             font_name: "fonts/Montserrat-SemiBold.ttf"
         Label:
+            size_hint:(.40, .15)
+            pos_hint:{'center_x': 0.5, 'y': .82}
+            id: msg_talon
+            text: ""  
+            font_name: "fonts/Montserrat-SemiBold.ttf"
+        RelativeLayout:
             id: talon
             size_hint:(.40, .15)
-            pos_hint:{'x':.30, 'y':.65}
+            pos_hint: {'center_x': 0.5, 'center_y': 0.75}
             text: ""  
             font_size: '24sp'
             font_name: "fonts/Montserrat-SemiBold.ttf"
         BoxLayout:
-            size_hint:(.1, .1)
-            pos_hint:{'x':.10, 'y':.45}
+            size_hint:(.40, .15)
+            pos_hint:{'x':0.02, 'center_y':0.5}
             id: main_joueur
             orientation: 'horizontal'
-            spacing: 30
+            spacing: 18
         Label:
             size_hint:(.40, .15)
             pos_hint:{'x':.30, 'y':.25}

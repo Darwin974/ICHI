@@ -1,7 +1,8 @@
 class Carte:
-    def __init__(self, valeur, couleur):
+    def __init__(self, valeur, couleur, path):
         self._valeur = valeur  # La valeur de la carte (par exemple, 1, 2, '+2')
         self._couleur = couleur  # La couleur de la carte ('Rouge', 'Bleu', 'Vert', 'Jaune')
+        self.image = path
 
     @property
     def valeur(self):

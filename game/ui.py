@@ -8,6 +8,7 @@ from kivy.clock import Clock
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.label import Label
+from kivy.uix.image import Image
 from main import UnoGame
 
 class GameScreen(Screen):
@@ -19,10 +20,17 @@ class GameScreen(Screen):
         self.afficher_cartes_ia()
 
     def afficher_main(self):
-        '''Affiche la main du joueur'''
+        '''Affiche la main du joueur sous forme d'images'''
         self.ids['main_joueur'].clear_widgets()
+    
         for carte in self.game.joueur['main']:
-            btn = Button(text=str(carte), size_hint=(None, None), size=(50, 70))
+            #Creation d'un bouton avec une l'image de la carte
+            btn = Button(size_hint=(None, None),
+                        size=(75, 95),
+                        border=(0, 0, 0, 0),
+                        background_normal=carte.image,
+                        background_down=carte.image)
+                     
             btn.bind(on_release=lambda instance, c=carte: self.jouer_carte(c))
             self.ids['main_joueur'].add_widget(btn)
 
@@ -66,15 +74,25 @@ class GameScreen(Screen):
     def afficher_carte_talon(self):
         '''Affiche la carte du talon dans le label talon'''
         carte_actuelle = self.game.talon[-1]
+        self.ids['talon'].clear_widgets()
+
+        image_widget = Image(source=carte_actuelle.image, size_hint=(None, None), size=(110, 130))
+        image_widget.pos_hint = {'center_x': 0.5, 'center_y': 0.5}
+        self.ids['talon'].add_widget(image_widget)
+
+        if carte_actuelle.valeur in ['Joker', 'Joker +4']:
+            self.ids['msg_talon'].text = f"Couleur : {carte_actuelle.couleur}"
+        else:
+            self.ids['msg_talon'].text = ""
         if len(self.game.talon) == 1 and carte_actuelle.valeur in ['Joker', 'Joker +4']:
-            self.ids['message'].text = f"{str(carte_actuelle)} (Jouez n'importe quelle carte)"
+            self.ids['message'].text = f"{str(carte_actuelle.valeur)} {carte_actuelle.couleur}  (Jouez n'importe quelle carte)"
         elif len(self.game.talon) == 1 and not carte_actuelle.valeur in ['Joker', 'Joker +4']:
             self.ids['message'].text = "Vous jouez en premier(e)"
-        self.ids['talon'].text = str(carte_actuelle)
 
     def prochain_tour(self):
         '''Passe au prochain tour'''
         print("Passage au tour suivant")
+        carte_actuelle = self.game.talon[-1]
         self.afficher_cartes_ia()
         
         #Verifie si victoire apres coup
