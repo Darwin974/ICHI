@@ -36,18 +36,21 @@ Cette classe sert de structure de base pour toutes les cartes qui seront génér
 ---
 
 ### [paquet.py](https://github.com/Darwin974/ICHI/blob/main/game/paquet.py) :
-Le fichier **[paquet.py](https://github.com/Darwin974/ICHI/blob/main/game/paquet.py)** contient la classe ```JeuDeCartes```, qui gère l'ensemble des cartes du jeu. Cette classe inclut :
+Le fichier **[paquet.py](https://github.com/Darwin974/ICHI/blob/main/game/paquet.py)** contient la classe ```JeuDeCartes```, qui gère l'ensemble des cartes du jeu.
 #### Attributs principaux :
 **```PaquetDeCarte```** : un tableau contenant toutes les cartes du jeu, générées grâce à la méthode ```creer_paquet()```.
 
 #### Méthodes :
-**```creer_paquet()```** : Génère un paquet de 108 cartes, comme dans le jeu UNO.
-Ajoute les cartes numériques (0 à 9), les cartes spéciales ('+2', 'Inversion', 'Passer') pour chaque couleur, et les Jokers.
+**```creer_paquet()```** : Génère un paquet de **108 cartes**, comme dans le jeu UNO. Ajoute les cartes numériques **(0 à 9)**, les cartes spéciales ('+2', 'Inversion', 'Passer') pour chaque couleur, et les Jokers.
 Attribue un chemin d'image spécifique à chaque carte (Ex: ```img/Cartes/R/_0.png``` pour une carte rouge '0').
 Retourne un tableau contenant toutes les cartes sous forme d’objets Carte.
+\
 ```melanger_paquet()``` : mélange les cartes du paquet à l'aide de shuffle de la bibliothèque random.
+\
 ```piocher()``` : retire et retourne la dernière carte du paquet, ou None si le paquet est vide.
+\
 ```get_nb_cartes()``` : retourne le nombre total de cartes dans le paquet.
+\
 ```get_paquet()``` : retourne une liste des cartes sous forme de chaînes de caractères (via leur méthode ```__str__```).
 
 Cette classe permet donc de gérer toutes les opérations liées au paquet de cartes du jeu : **création, mélange, et gestion des tirages pendant la partie**.
