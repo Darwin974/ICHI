@@ -1,6 +1,5 @@
 from paquet import *
 from ui import *
-from kivy.clock import Clock
 import random
 
 class UnoGame:
@@ -16,7 +15,7 @@ class UnoGame:
 
     def piocher_carte(self):
         '''Pioche une carte'''
-        return self.jeu.piocher()
+        return self.jeu.piocher() 
 
     def jouer_carte(self, carte):
         '''Met la carte sur le talon'''

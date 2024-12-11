@@ -135,12 +135,169 @@ Cette classe centralise donc toutes les opérations essentielles pour simuler un
 ---
 
 ### [ui.py](https://github.com/Darwin974/ICHI/blob/main/game/ui.py) :
+Le fichier **`ui.py`** définit l'interface utilisateur pour le jeu Uno. Il utilise **Kivy**, un framework Python pour créer des applications avec des interfaces graphiques.
+
+### Classes principales :
+
+#### **`GameScreen`**
+La classe **`GameScreen`** hérite de **`Screen`** de Kivy et représente l'écran principal du jeu où les interactions de parties se déroulent.
+
+### Méthodes principales :
+**`on_enter()`** :
+- Méthode déclenchée à l'entrée sur l'écran.
+- Initialise une partie en créant une instance de la classe **`UnoGame`** (de **`main.py`**).
+- Affiche la main du joueur, la carte du talon, et les cartes restantes de l'IA.
+
+**`afficher_main()`** :
+- Affiche les cartes du joueur en tant que boutons, avec l'image de chaque carte.
+- Chaque bouton est lié à l'action **`jouer_carte(carte)`**, déclenchée lorsqu'on clique dessus.
+
+**`afficher_cartes_ia()`** :
+\
+Met à jour l'affichage du nombre de cartes restantes dans la main de l'IA.
+
+**`jouer_carte(carte)`** :
+- Permet de jouer une carte si elle est valide (vérification avec **`carte_valide()`**).
+- Gère les **Jokers** en ouvrant une fenêtre pour choisir une couleur avec **`choisir_couleur()`**.
+- Si la carte n’est pas valide, un message est affiché.
+
+**`appliquer_couleur(carte, couleur)`** :
+- Applique une couleur choisie à un Joker ou **`Joker +4`**, puis exécute les effets et passe au tour suivant.
+
+**`appliquer_effet_et_tour(carte)`** :
+- Applique les effets des cartes spéciales via **`appliquer_effet()`** de **`UnoGame`**.
+- Vérifie si un joueur a gagné.
+- Alterne les tours entre le joueur et l'IA.
+
+**`afficher_carte_talon()`** :
+- Met à jour l'affichage de la carte actuelle du talon.
+- Gère les messages contextuels pour les Jokers et leur couleur.
+
+**`prochain_tour()`** :
+- Gère le passage au tour suivant.
+- Affiche la main du joueur si c’est son tour, ou programme l'action de l'IA via un délai avec **`Clock.schedule_once()`** de **Kivy**.
+
+**`jouer_tour_ia()`** :
+- Appelle la méthode **`tour_ia()`** de **`UnoGame`** pour exécuter le tour de l’IA.
+- Met à jour l’affichage après le tour de l’IA et passe au joueur suivant.
+
+**`passer_tour()`** :
+\
+Permet au joueur de passer son tour.
+- Le joueur pioche une carte, puis c’est au tour de l’IA.
+
+**`choisir_couleur(callback)`** :
+- Affiche une fenêtre permettant au joueur de sélectionner une couleur pour son Joker.
+- La couleur choisie est appliquée via le **callback**.
+
+### Fonctionnalités globales :
+- **Affichage dynamique** : Les mains des joueurs et le talon sont mis à jour en temps réel.
+- **Interactivité** : Les boutons permettent de jouer des cartes, passer un tour, ou choisir une couleur.
+- **Tour de l’IA** : Géré automatiquement après un délai pour simuler une réflexion.
+
+### Intégration avec **`main.py`** :
+Le fichier **`ui.py`** agit comme un pont entre la logique du jeu (dans **`main.py`**) et l'interface utilisateur que on personalise avec `Ichi.kv`. Il utilise les méthodes de **`UnoGame`** pour gérer les actions de jeu tout en mettant à jour l'affichage en conséquence.
 
 ---
 
 ### [Ichi.kv](https://github.com/Darwin974/ICHI/blob/main/game/Ichi.kv) :
+Le fichier **`Ichi.kv`** contient les définitions de l'interface utilisateur notre jeu **Ichi**, construit avec **Kivy**. Il structure les écrans, les widgets et leurs propriétés, et applique un style personnalisé pour certains éléments.
 
-## Les difficultés rencontrés
+### Principales sections :
+
+**Bouton personnalisé, RoundedButton** :
+\
+Représente un bouton arrondi avec un style spécifique.
+\
+**Attributs principaux** :
+  - `font_name` : définit une police personnalisée, ici une police japonaise.
+  - `font_size` : ajuste la taille du texte.
+  - `background_color` et `background_normal` : éliminent l'arrière-plan par défaut de Kivy.
+  - `canvas.before` : ajoute un rectangle arrondi avec un rayon de 45 pour obtenir **l'effet visuel arrondi**.
+
+**Gestionnaire d'écrans : MyScreenManager** :
+\
+Contrôle la navigation entre les écrans de l'application.
+- Contient **trois écrans** principaux :
+  - `HomeScreen` : l'écran d'accueil.
+  - `GameSelect` : l'écran de sélection du mode de jeu. (Ne méne que vers solo pour le moment)
+  - `GameScreen` : l'écran principal où se déroule la partie.
+
+### Écrans définis :
+
+**Écran d'accueil, HomeScreen** :
+- Présente une interface d'accueil avec :
+  - **Logo** : une image affichée au centre, redimensionnable pour s'adapter à l'écran.
+  - **Bouton "Play"** : redirige vers l'écran de sélection des modes de jeu.
+  - **Bouton "Exit"** : ferme l'application.
+
+**Écran de sélection, GameSelect** :
+- Permet au joueur de choisir un mode de jeu.
+- Inclut :
+  - Un **Label** : indique à l'utilisateur de choisir un mode de jeu.
+  - Un **Bouton "Solo"** : redirige vers l'écran de jeu principal.
+
+**Écran principal : GameScreen** :
+- Interface de la partie principale, utilisant divers widgets pour afficher l'état du jeu :
+  - **Bouton de retour** : permet de revenir à l'écran d'accueil.
+    - `background_normal` : utilise une image personnalisée (icône "return").
+  - **Labels dynamiques** :
+    - `nb_cartes_ia` : affiche le nombre de cartes dans la main de l'IA.
+    - `msg_talon` : affiche les informations concernant la carte au sommet du talon.
+    - `message` : permet d'afficher des messages au joueur.
+  - **Relayout `talon`** :
+    - Zone dédiée pour afficher la carte actuelle au sommet du talon.
+  - **BoxLayout `main_joueur`** :
+    - Contient les cartes du joueur sous forme d'une liste horizontale.
+  - **Bouton "Passer le tour"** :
+    - Appelle la méthode `passer_tour()` pour gérer l'alternance des tours.
+
+
+### Fonctionnalités globales :
+**Navigation fluide entre les écrans** :
+   - Gestion simplifiée grâce au `ScreenManager`.
+
+**Interface responsive** :
+   - Les tailles et positions des éléments sont définies via `size_hint` et `pos_hint` pour s'adapter à différentes résolutions.
+
+**Styles personnalisés** :
+   - Les boutons et widgets sont visuellement distincts grâce à l'utilisation de polices spécifiques et d'images personnalisés.
+
+Ce fichier définit donc l'aspect visuel et interactif du jeu tout en restant lié à la logique principale définie dans **`main.py`** et **`ui.py`**.
+
+---
+
+## Les difficultés rencontrés :
+Pour la création de ce jeu, j'ai fait face à beaucoup de difficultés, la plupart de celle-ci sont dû au fait de d'utiliser pour la premiére fois **Kivy**. J'ai pris du temps à m'approprier Kivy surtout en python dans le fichier `ui.py` car je trouve que les fonctions python de Kivy ne sont pas forcément facile à comprendre, cependant pour le fichier `Ichi.kv` je n'ai pas eu beaucoup de difficultés malgré le language de programmation **.kv** de Kivy, en fait celui-ci me rappelait beaucoup le **CSS** que je maîtrise assez bien donc je me suis adapté rapidement, il suffisait juste de découvrir comment se nomment les fonctions de Kivy. Mais le fichiers qui m'a vraiment causé le plus de difficultés et de mals de têtes était **`ui.py`** car pour faire communiqué les fonctions python de Kivy avec le fichier de configuration `Ichi.kv` ce n'était pas évident et facile à comprendre je trouve. Par exemple j'ai dû apprendre et comprendre ce qu'était un **`callback`** et une fonction **`lambda`**. Car en lisant dans la documentation kivy et sur des tutos j'ai trouvé cette solution pour éxécuter une fonction aprés l'appuie d'un bouton kivy :
+```python
+btn.bind(on_release=lambda instance, c=carte: self.jouer_carte(c))
+```
+Le probléme ici c'est que je ne connaissait pas **`lambda`** et même en cherchant sur internet des informations sur cette fonction de python, je n'ai pas vraiment compris tout de suite donc je faisait un peu n'importe quoi avec pour essayer de faire marcher mais aprés j'ai compris et c'est devenu beaucoup plus facile et j'ai commencé à l'utiliser un peu partout.
+
+Ensuite pour les fonctions python je trouve leur importations un peu laborieuse du fait qu'il faut importer chaque élément à la fois de cette manière :
+```python
+from kivy.uix.popup import Popup
+```
+Mais bon je pense que c'est dû au fait que la bibliothéque **Kivy** est très large, et c'est pas si embêtant aprés avoir compris quoi importer pour **son** projet.
+
+La derniere grosse difficulté que j'ai rencontré c'était la comminication entre `main.py` et `ui.py` surtout avec leurs **Class**. Car j'avait quelques probléme où j'avais besoin d'accéder à certains attributs. Par exemple :
+```python
+for carte in self.game.joueur['main']:
+```
+Cette ligne ne fonctionnerait pas si je n'avait pas lié `main.py` et `ui.py` entre eux de cette manière :
+```python
+main.py :
+class UnoGame:
+    def __init__(self, game_screen):
+        self.game_screen = game_screen
+
+ui.py :
+def on_enter(self):
+    self.game = UnoGame(self)
+```
+Avec cette méthode je peux accéder aux attributs de `UnoGame` depuis `ui.py` sans problème alors que avant ça ne marchait pas je ne sais toujours pas vraiment pourquoi, mais j'ai trouvé cette solution sur un forum et heureusement car ça m'a beaucoup aidé.
+
+Voilà c'est les plus gros problémes que j'ai rencontré en codant **Ichi**, et malgrès ceux-ci je trouve que le jeu est réussi et j'en suis fier.
 
 ---
 **By DAMOUR ROUGEMONT Maxime**
