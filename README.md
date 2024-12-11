@@ -18,7 +18,7 @@
 - [x] Boucle de jeu de base et interface Kivy
 - [x] Faire une IA
 - [x] Faire un exécutable .exe
-- [ ] Mettre des images pour les cartes
+- [x] Mettre des images pour les cartes
 - [ ] Ajouter le support multijoueur local (fonctionnalité future)
 - [ ] Ajouter le support multijoueur en ligne (fonctionnalité future)
 
