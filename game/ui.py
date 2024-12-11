@@ -64,7 +64,7 @@ class GameScreen(Screen):
         #Verifie si victoire apres coup
         gagnant = self.game.verifier_victoire()
         if gagnant:
-            self.ids['message'].text = f"{gagnant} gagné !"
+            self.ids['message'].text = f"{gagnant}"
             return
         
         #Alterne le tour
@@ -98,7 +98,7 @@ class GameScreen(Screen):
         #Verifie si victoire apres coup
         gagnant = self.game.verifier_victoire()
         if gagnant:
-            self.ids['message'].text = f"{gagnant} gagné !"
+            self.ids['message'].text = f"{gagnant}"
             return
 
         if self.game.tour_joueur:
