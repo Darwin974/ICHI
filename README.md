@@ -22,6 +22,9 @@
 - [ ] Ajouter le support multijoueur local (fonctionnalité future)
 - [ ] Ajouter le support multijoueur en ligne (fonctionnalité future)
 
+## Documents
+Tout les documents du jeu se trouvent dans **[/game/Docs](https://github.com/Darwin974/ICHI/blob/main/game/Docs)**
+
 ## Installation
 Téléchargez le dossier **[/game](https://github.com/Darwin974/ICHI/blob/main/game)** et exécuter le fichier **[main.py](https://github.com/Darwin974/ICHI/blob/main/game/main.py)**.
 Ou alors téléchargez le dossier **[/Ichi_exe](https://github.com/Darwin974/ICHI/blob/main/Ichi_exe)** et lancez l'exécutable **[Ichi.exe](https://github.com/Darwin974/ICHI/blob/main/Ichi_App/Ichi.exe)**.
