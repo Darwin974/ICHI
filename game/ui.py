@@ -146,7 +146,7 @@ class GameScreen(Screen):
         popup.open()
 
     def get_color_rgba(self, couleur):
-        """Retourne les valeurs RGBA associées aux couleurs."""
+        """Retourne les valeurs RGBA associées aux couleurs"""
         return {
             'Rouge': (1, 0, 0, 1),
             'Bleu': (0, 0, 1, 1),

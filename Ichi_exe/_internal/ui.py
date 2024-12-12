@@ -5,9 +5,7 @@ from kivy.uix.button import Button
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
 from kivy.clock import Clock
-from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
-from kivy.uix.label import Label
 from kivy.uix.image import Image
 from main import UnoGame
 
@@ -64,7 +62,7 @@ class GameScreen(Screen):
         #Verifie si victoire apres coup
         gagnant = self.game.verifier_victoire()
         if gagnant:
-            self.ids['message'].text = f"{gagnant} gagné !"
+            self.ids['message'].text = f"{gagnant}"
             return
         
         #Alterne le tour
@@ -98,7 +96,7 @@ class GameScreen(Screen):
         #Verifie si victoire apres coup
         gagnant = self.game.verifier_victoire()
         if gagnant:
-            self.ids['message'].text = f"{gagnant} gagné !"
+            self.ids['message'].text = f"{gagnant}"
             return
 
         if self.game.tour_joueur:
@@ -148,7 +146,7 @@ class GameScreen(Screen):
         popup.open()
 
     def get_color_rgba(self, couleur):
-        """Retourne les valeurs RGBA associées aux couleurs."""
+        """Retourne les valeurs RGBA associées aux couleurs"""
         return {
             'Rouge': (1, 0, 0, 1),
             'Bleu': (0, 0, 1, 1),

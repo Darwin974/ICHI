@@ -1,6 +1,5 @@
 from paquet import *
 from ui import *
-from kivy.clock import Clock
 import random
 
 class UnoGame:
@@ -16,7 +15,7 @@ class UnoGame:
 
     def piocher_carte(self):
         '''Pioche une carte'''
-        return self.jeu.piocher()
+        return self.jeu.piocher() 
 
     def jouer_carte(self, carte):
         '''Met la carte sur le talon'''
@@ -101,11 +100,11 @@ class UnoGame:
     def verifier_victoire(self):
         '''Verifie si il y a Victoire'''
         if not self.jeu.PaquetDeCarte:  #Verifie si la pioche est vide
-            return "Il n'y a plus de carte..."
+            return "Il n'y a plus de carte... Match nul"
         elif not self.joueur['main']:
-            return "Vous avez"
+            return "Vous avez gagné !"
         elif not self.ia['main']:
-            return "L'IA a"
+            return "L'IA a gagné !"
         return None
 
 #Lancement du jeu
