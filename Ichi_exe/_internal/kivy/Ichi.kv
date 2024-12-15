@@ -20,6 +20,10 @@ MyScreenManager:
         name: "game_select"
     GameScreen:
         name: "game_screen"
+    WinnerScreen:
+        name: "winner_screen"
+    LooserScreen:
+        name: "looser_screen"
 
 #Écran d'accueil
 <HomeScreen>:
@@ -115,3 +119,35 @@ MyScreenManager:
             pos_hint:{'x':.30, 'y':.10}
             text: "Passer le tour"
             on_release: root.passer_tour()
+
+<WinnerScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+        padding: 50
+        Label:
+            text: "Félicitations ! Vous avez gagné !"
+            font_name: "fonts/Montserrat-SemiBold.ttf"
+            font_size: '32sp'
+            color: (0, 1, 0, 1)
+        RoundedButton:
+            text: "Retour"
+            size_hint: (0.5, 0.2)
+            pos_hint: {"center_x": 0.5}
+            on_release: app.root.current = "home"
+
+<LooserScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+        padding: 50
+        Label:
+            text: "Vous avez perdu..."
+            font_name: "fonts/Montserrat-SemiBold.ttf"
+            font_size: '32sp'
+            color: (1, 0, 0, 1)
+        RoundedButton:
+            text: "Retour"
+            size_hint: (0.5, 0.2)
+            pos_hint: {"center_x": 0.5}
+            on_release: app.root.current = "home"

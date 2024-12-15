@@ -8,6 +8,9 @@ from kivy.clock import Clock
 from kivy.uix.button import Button
 from kivy.uix.image import Image
 from main import UnoGame
+from kivy.config import Config
+
+Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
 
 class GameScreen(Screen):
     def on_enter(self):
@@ -58,12 +61,6 @@ class GameScreen(Screen):
     def appliquer_effet_et_tour(self, carte):
         '''Applique l'effet de la carte et passe au tour suivant'''
         self.game.appliquer_effet(carte)
-
-        #Verifie si victoire apres coup
-        gagnant = self.game.verifier_victoire()
-        if gagnant:
-            self.ids['message'].text = f"{gagnant}"
-            return
         
         #Alterne le tour
         self.game.tour_joueur = not self.game.tour_joueur
@@ -78,7 +75,10 @@ class GameScreen(Screen):
         image_widget.pos_hint = {'center_x': 0.5, 'center_y': 0.5}
         self.ids['talon'].add_widget(image_widget)
 
-        if carte_actuelle.valeur in ['Joker', 'Joker +4']:
+        #Affiche la couleur du Joker du talon
+        if len(self.game.talon) == 1:
+            self.ids['msg_talon'].text = ""
+        elif carte_actuelle.valeur in ['Joker', 'Joker +4']: 
             self.ids['msg_talon'].text = f"Couleur : {carte_actuelle.couleur}"
         else:
             self.ids['msg_talon'].text = ""
@@ -87,16 +87,19 @@ class GameScreen(Screen):
         elif len(self.game.talon) == 1 and not carte_actuelle.valeur in ['Joker', 'Joker +4']:
             self.ids['message'].text = "Vous jouez en premier(e)"
 
+
     def prochain_tour(self):
         '''Passe au prochain tour'''
         print("Passage au tour suivant")
-        carte_actuelle = self.game.talon[-1]
         self.afficher_cartes_ia()
         
         #Verifie si victoire apres coup
         gagnant = self.game.verifier_victoire()
-        if gagnant:
-            self.ids['message'].text = f"{gagnant}"
+        if gagnant == "Vous avez gagné !" or gagnant == "Il n'y a plus de carte... Match nul":
+            self.manager.current = "winner_screen"
+            return
+        elif gagnant == "L'IA a gagné !":
+            self.manager.current = "looser_screen"
             return
 
         if self.game.tour_joueur:
@@ -164,6 +167,12 @@ class GameScreen(Screen):
     pass
 
 class MyScreenManager(ScreenManager):
+    pass
+
+class WinnerScreen(Screen):
+    pass
+
+class LooserScreen(Screen):
     pass
 
 class Ichi(App):
