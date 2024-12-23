@@ -15,6 +15,8 @@ class UnoGame:
 
     def piocher_carte(self):
         '''Pioche une carte'''
+        if not self.jeu:
+            return None
         return self.jeu.piocher() 
 
     def jouer_carte(self, carte):
