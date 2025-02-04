@@ -4,10 +4,10 @@
 </p>
 
 **ICHI** est une version numérique du célèbre jeu de cartes **Uno**, créée en utilisant **Python** et **Kivy**. Ce projet est en cours de développement, avec des plans pour ajouter des fonctionnalités multijoueurs et une IA améliorée dans le futur.
-<div class="grid" markdown>
-![](https://github.com/Darwin974/ICHI/blob/main/game/img/Menu%20Capture.png?raw=true)
-![](https://github.com/Darwin974/ICHI/blob/main/game/img/Game%20Capture.png?raw=true)
-</div>
+Solarized dark                                                                        |                                                                      Solarized Ocean
+:------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------:
+![](https://github.com/Darwin974/ICHI/blob/main/game/img/Menu%20Capture.png?raw=true) | ![](https://github.com/Darwin974/ICHI/blob/main/game/img/Game%20Capture.png?raw=true)
+
 ## Fonctionnalités
 
 - **Mécanique du jeu** : Implémente les règles de l'Uno, y compris :
