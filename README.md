@@ -1,5 +1,7 @@
 # ICHI - Jeu Uno en Python avec Kivy
-<img src="https://github.com/Darwin974/ICHI/blob/main/game/img/ICHI_logo.png?raw=true" width="350">
+<div style="width:20%; margin: auto;">
+![](https://github.com/Darwin974/ICHI/blob/main/game/img/ICHI_logo.png?raw=true)
+</div>
 
 **ICHI** est une version numérique du célèbre jeu de cartes **Uno**, créée en utilisant **Python** et **Kivy**. Ce projet est en cours de développement, avec des plans pour ajouter des fonctionnalités multijoueurs et une IA améliorée dans le futur.
 ![](https://github.com/Darwin974/ICHI/blob/main/game/img/Menu%20Capture.png?raw=true) ![](https://github.com/Darwin974/ICHI/blob/main/game/img/Game%20Capture.png?raw=true)
